@@ -19,7 +19,7 @@ public class CalenderController {
         this.calenderService = calenderService;
     }
 
-    @GetMapping
+    @GetMapping("/getTasks")
     public ResponseEntity getAllTasks() {
         return ResponseEntity.ok(calenderService.readAllTasks());
     }
