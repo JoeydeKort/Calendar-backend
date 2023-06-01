@@ -24,7 +24,7 @@ public class CalenderController {
         return ResponseEntity.ok(calenderService.readAllTasks());
     }
 
-    @PostMapping("/addEvent")
+    @PostMapping("/addTask")
     public ResponseEntity createNewTask(@RequestBody CalenderTask task) {
         Optional<CalenderTask> savedTask = calenderService.addTask(task);
         if (savedTask.isEmpty()) {
@@ -34,6 +34,7 @@ public class CalenderController {
         return ResponseEntity.ok(savedTask.get());
     }
 
+    @PutMapping("/updateTask/{id}")
     public ResponseEntity updateTask(@RequestBody CalenderTask task) {
         Optional<CalenderTask> updatedTask = calenderService.updateTask(task);
         if (updatedTask.isEmpty()) {
@@ -43,6 +44,7 @@ public class CalenderController {
         return ResponseEntity.ok(updatedTask.get());
     }
 
+    @DeleteMapping("/deleteTask/{id}")
     public ResponseEntity deleteTask(@RequestBody CalenderTask task) {
         Optional<CalenderTask> deletedTask = calenderService.deleteTask(task);
         if (deletedTask.isEmpty()) {
@@ -51,4 +53,5 @@ public class CalenderController {
 
         return ResponseEntity.ok(deletedTask.get());
     }
+
 }
